@@ -1,0 +1,32 @@
+{% extends "mp_churrascos/base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic</title>
+</head>
+<body>
+    {% block content %}
+        <p>Tópico: {{ topic }}</p>
+
+        <p>Anotações:</p>
+        <p><a href="{% url 'new_entry' topic.id %}">Adicione uma nova entrada...</a></p>
+
+        <ul>
+            {% for entry in entries %}
+                <li>
+                    <p>{{ entry.date_added | date:'M d, Y H:i' }}</p>
+                    <p>{{ entry.text | linebreaks }}</p>
+                    <p>
+                        <a href="{% url 'edit_entry' entry.id %}">Edita Anotação...</a>
+                    </p>
+                </li>
+            {% empty %}
+                <li>Empty...</li>
+            {% endfor %}
+        </ul>
+
+    {% endblock content %}
+</body>
+</html>

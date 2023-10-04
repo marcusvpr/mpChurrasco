@@ -1,0 +1,21 @@
+{% extends "mp_churrascos/base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Topic</title>
+</head>
+<body>
+    {% block content %}
+        <p>Adicione Novo Tópico:</p>
+
+        <form action="{% url 'new_topic' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit">Adicionar</button>
+        </form>
+
+    {% endblock content %}
+</body>
+</html>
