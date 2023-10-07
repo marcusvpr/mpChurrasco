@@ -8,4 +8,7 @@ urlpatterns = [
     path('new_topic', views.new_topic, name='new_topic'),
     path('new_entry/<topic_id>/', views.new_entry, name='new_entry'),
     path('edit_entry/<entry_id>/', views.edit_entry, name='edit_entry'),
+
+    path('churrasco', views.churrasco, name='churrasco'),
+    path('churrascoResult/<usuario_id>/', views.churrascoResult, name='churrascoResult'),
 ]

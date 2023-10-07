@@ -1,0 +1,22 @@
+{% extends "mp_churrascos/base.html" %}
+    {% block title %}Planejamento Churrasco:{% endblock %}
+    {% block content %}
+        <h2>Resultado Planejamento Churrasco - CPF: {{ usuario.cpf }}</h2>
+
+        <div class="card">
+            <img src="./img/mapa_niteroi.png" alt="Centro - Niteroi" />
+            <h3>Origem:</h3>
+            <p>Centro - Niterói</p>
+            <p>Latitude / Longitude: -22.89097208098677 / -43.1137931282155</p>
+        </div>
+
+        <div class="card">
+            <h3>Destino:</h3>
+            <p>CEP: {{ usuario.cep }}</p>
+            <p>Latitude / Longitude: {{ usuario.latitude }} / {{ usuario.longitude }}</p>
+            <p>Endereço: {{ usuario.endereco }}</p>
+            <p>Distância: {{ usuario.distancia }} KM</p>
+            <p>Número Convidados: {{ usuario.qtdPessoas }}</p>
+        </div>
+
+    {% endblock content %}

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mp_churrascos',
     'mp_users',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [

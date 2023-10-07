@@ -1,12 +1,5 @@
 {% extends "mp_churrascos/base.html" %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Entry</title>
-</head>
-<body>
+    {% block title %}Edit Entry{% endblock %}
     {% block content %}
         <p><a href="{% url 'topic' topic.id %}">Tópico: {{ topic }}</a></p>
 
@@ -15,9 +8,7 @@
         <form action="{% url 'edit_entry' entry.id %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button name="submit">Salvar</button>
+            <button name="submit" class="btn btn-primary">Salvar</button>
         </form>
 
     {% endblock content %}
-</body>
-</html>

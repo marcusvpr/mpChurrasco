@@ -1,15 +1,42 @@
 {% extends "mp_churrascos/base.html" %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    {% block content %}
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, 
-            consequatur. Soluta fugiat ut doloribus voluptates natus cum cumque molestias molestiae, non dolorum similique deserunt expedita porro doloremque sint nobis commodi.</p>
-    {% endblock content %}
-</body>
-</html>
+{% block title %}Home{% endblock %}
+{% block content %}
+<h2>Home - Projeto 5:</h2>
+<p>                    <p>
+    <a href="{% url 'churrasco' %}">Planejar CHURRASCO...</a>
+</p>
+</p>
+<p>
+    <p>Aplicação de Churrasco com Validação de CEP e CPF.</p>
+    <p>Neste projeto, os alunos criarão uma aplicação Python simples que ajudará
+    os usuários a planejar um churrasco.</p>
+    <p>
+        A aplicação deve seguir as seguintes etapas:
+    </p>
+    <p>
+        ➔ Validação de CEP:<br>
+        ◆ Os usuários inserirão seu CEP para verificar a disponibilidade de entrega de
+        produtos para o churrasco.<br>
+        ◆ Os alunos precisarão incorporar uma API de consulta de CEP para verificar
+        se o CEP é válido e quais opções de entrega estão disponíveis.
+    </p>
+    <p>
+        ➔ Validação de CPF:<br>
+        ◆ Os usuários fornecerão o CPF e o sistema deve verificar se é um número de
+        CPF válido.
+    </p>
+    <p>
+        ➔ Cálculo de Carne e Bebidas:<br>
+        ◆ Após a validação bem-sucedida do CEP e do CPF, os usuários poderão inserir
+        o número de convidados para o churrasco e a aplicação calculará
+        automaticamente a quantidade de carne e bebidas necessárias com base
+        em um conjunto de regras pré-definidas.
+    </p>
+    <p>
+        ➔ Apresentação dos Resultados:<br>
+        ◆ A aplicação exibirá os resultados do cálculo, incluindo a quantidade de carne
+        e bebidas necessárias, além das opções de entrega disponíveis com base no
+        CEP.
+    </p>
+</p>
+{% endblock content %}
