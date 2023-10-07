@@ -24,5 +24,5 @@ class MpUsuarioChurrascoForm(forms.ModelForm):
     class Meta:
         model = MpUsuarioChurrasco
         fields = ['cep', 'cpf', 'qtdPessoas']
-        labels = {'cep': 'Cep:', 'cpf': 'CPF:', 'qtdPessoas': 'No.Convidados:'}
+        labels = {'cep': 'CEP:', 'cpf': 'CPF:', 'qtdPessoas': 'No.Convidados:'}
         # widgets = {'resultado': forms.Textarea(attrs={'cols': 80, 'readonly': True})}

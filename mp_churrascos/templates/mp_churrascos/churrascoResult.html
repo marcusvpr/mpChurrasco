@@ -1,14 +1,16 @@
 {% extends "mp_churrascos/base.html" %}
+    {% load static %}
     {% block title %}Planejamento Churrasco:{% endblock %}
     {% block content %}
         <h2>Resultado Planejamento Churrasco - CPF: {{ usuario.cpf }}</h2>
 
         <div class="card">
-            <!-- img src="./img/mapa_niteroi.png" alt="Centro - Niteroi" /> -->
+            <img src="{% static '/img/mapa_niteroi.png' %}" alt="Centro - Niteroi" />
             <h3>Origem:</h3>
             <p>Rua Marquês do Paranná, 157</p>
             <p>Centro - Niterói</p>
             <p>Latitude / Longitude: -22.89097208098677 / -43.1137931282155</p>
+            <p>Limite distância entrega: <b>50 KM</b></p>
         </div>
         <div class="card">
             <h3>Tabela Tipo Transporte Entrega:</h3>
