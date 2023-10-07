@@ -40,3 +40,6 @@ class MpUsuarioChurrasco(models.Model):
     latitude = models.CharField(max_length=20)
     longitude = models.CharField(max_length=20)
     distancia = models.CharField(max_length=10)
+    tipoTransporte = models.CharField(max_length=20)
+    kitBebidas = models.CharField(max_length=200)
+    kitCarnes = models.CharField(max_length=200)

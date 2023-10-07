@@ -134,7 +134,14 @@ def churrasco(request):
                         if distanciaKM > 50:
                             form.add_error('cpf', 'Distância excede 50 Km... não podemos atender! ( ' + str(distanciaKM))
                         else:
-                            usuario.distancia = str(distanciaKM) # Em KM !
+                            # Em KM !
+                            usuario.distancia = str(distanciaKM)
+                            # Define Tipo Transporte! 
+                            usuario.tipoTransporte = define_tipoTransporte(int(usuario.qtdPessoas))
+                            # Calcula Kit de Bebidas! 
+                            usuario.kitBebidas = calcula_kitBebidas(int(usuario.qtdPessoas))
+                            # Calcula Kit de Carnes! 
+                            usuario.kitCarnes = calcula_kitCarnes(int(usuario.qtdPessoas))
 
                             usuario.save()
                             
@@ -216,24 +223,68 @@ def captura_latLong(endereco):
 
 def calcula_distancia(usuario):
     """Calcula distância"""
+    # Raio médio da Terra em quilômetros
+    raio_terra = 6371
 
     #Local Origem: Niteroi - Centro
 	#Latitude / Longitude: -22.89097208098677 / -43.1137931282155
-    latitude_origem = -22.89097208098677
-    longitude_origem = -43.1137931282155
+    lat1 = math.radians(-22.89097208098677)
+    lon1 = math.radians(-43.1137931282155)
 
-    latitude_destino = float(usuario.latitude)
-    longitude_destino = float(usuario.longitude)
+    lat2 = math.radians(float(usuario.latitude))
+    lon2 = math.radians(float(usuario.longitude))
 
-    delta_latitude = latitude_destino - latitude_origem
-    delta_longitude = longitude_destino - longitude_origem
+    # Converter latitude e longitude de graus para radianos
+    lat1 = math.radians(lat1)
+    lon1 = math.radians(lon1)
+    lat2 = math.radians(lat2)
+    lon2 = math.radians(lon2)
 
-    R = 6371.01 # Raio da Terra em quilômetros
+    # Diferença entre as latitudes e longitudes
+    dif_lat = lat2 - lat1
+    dif_lon = lon2 - lon1
 
-    a = math.sin(delta_latitude / 2)**2 + math.cos(latitude_origem) * math.cos(latitude_destino) * math.sin(delta_longitude / 2)**2
+    # Fórmula de Haversine
+    a = math.sin(dif_lat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dif_lon/2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
 
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    # Distância em quilômetros
+    distanciaKM = raio_terra * c
 
-    distanciaKM = (R * c) / 100 # Vrf.??? / 100
+    return round(distanciaKM * 100, 3) # verificar *100!
 
-    return distanciaKM
+def define_tipoTransporte(qtdPessoas):
+    """Define Tipo Transporte"""
+    tipoTransporte = ""
+    if qtdPessoas <= 15:
+        tipoTransporte = "Motocicleta"
+    else: # Limite até 100 convidados ! 
+        tipoTransporte = "Carro"
+
+    # print(qtdPessoas, tipoTransporte)
+    return tipoTransporte
+
+def calcula_kitBebidas(qtdPessoas):
+    """Calcula Kit Bebidas"""
+    x = 1 * qtdPessoas
+    y = 3 * qtdPessoas
+    z = 1 * qtdPessoas
+
+    kitBebidas = f'({x})L Refrigerante, ({y})L Cerveja, ({z})L Aguá'
+
+    # print(qtdPessoas, kitBebidas)
+    return kitBebidas
+
+def calcula_kitCarnes(qtdPessoas):
+    """Calcula Kit Carnes"""
+    t = 0.5 * qtdPessoas
+    
+    x = t * 0.40
+    y = t * 0.25
+    z = t * 0.25
+    k = t * 0.10
+
+    kitCarnes = f'({x})Kg Bovina, ({y})Kg Linguiça, ({z})Kg Frango, ({k})Kg Suina'
+
+    # print(qtdPessoas, kitCarnes)
+    return kitCarnes

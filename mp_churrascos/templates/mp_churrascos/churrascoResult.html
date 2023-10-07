@@ -4,19 +4,34 @@
         <h2>Resultado Planejamento Churrasco - CPF: {{ usuario.cpf }}</h2>
 
         <div class="card">
-            <img src="./img/mapa_niteroi.png" alt="Centro - Niteroi" />
+            <!-- img src="./img/mapa_niteroi.png" alt="Centro - Niteroi" /> -->
             <h3>Origem:</h3>
+            <p>Rua Marquês do Paranná, 157</p>
             <p>Centro - Niterói</p>
             <p>Latitude / Longitude: -22.89097208098677 / -43.1137931282155</p>
+        </div>
+        <div class="card">
+            <h3>Tabela Tipo Transporte Entrega:</h3>
+            <ul>
+                <li>Motoclicleta: (001 à 015) convidados ;</li>
+                <li>Carro: (016 à 100) convidados ;</li>
+            </ul>
         </div>
 
         <div class="card">
             <h3>Destino:</h3>
             <p>CEP: {{ usuario.cep }}</p>
             <p>Latitude / Longitude: {{ usuario.latitude }} / {{ usuario.longitude }}</p>
-            <p>Endereço: {{ usuario.endereco }}</p>
-            <p>Distância: {{ usuario.distancia }} KM</p>
-            <p>Número Convidados: {{ usuario.qtdPessoas }}</p>
+            <p>Endereço: <b>{{ usuario.endereco }}</b></p>
+            <p>Distância: <b>{{ usuario.distancia }} KM</b></p>
+            <p>Tipo Transporte Entrega: <b>{{ usuario.tipoTransporte }}</b></p>
+        </div>
+
+        <div class="card">
+            <h3>Kits Bebidas e Carnes:</h3>
+            <p>Número Convidados: <b>{{ usuario.qtdPessoas }}</b></p>
+            <h6>Bebidas: {{ usuario.kitBebidas }}</h6>
+            <h6>Carnes: {{ usuario.kitCarnes }}</h6>
         </div>
 
     {% endblock content %}
