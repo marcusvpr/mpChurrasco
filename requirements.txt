@@ -1,5 +1,5 @@
 Django==4.2.5
-django-bootstrap-v5=23.3.0
-geopy=2.4.0
-validate-docbr=1.10.0
-gunicorn=21.2.0
+django-bootstrap-v5==23.3.0
+geopy==2.4.0
+validate-docbr==1.10.0
+gunicorn==21.2.0
