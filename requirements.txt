@@ -1,0 +1,5 @@
+Django==4.2.5
+django_bootstrap5=23.3
+geopy=2.4.0
+validate_docbr=1.10.0
+gunicorn=21.2.0
